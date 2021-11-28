@@ -13,6 +13,8 @@ difference() {
 	thread_for_nut(diameter=6, length=4);
 }
 */
+//MG995();
+servoHubAdapter25T();
 
 module MG995() {
 	BODY_WIDTH = 40;
@@ -20,7 +22,7 @@ module MG995() {
 	BODY_HEIGHT = 36.5;
 	
 	EAR_WIDTH = (52.8 - BODY_WIDTH) / 2;
-	EAR_DEPTH = (20 -2) / 2;
+	EAR_DEPTH = (20 - 2) / 2;
 	EAR_HEIGHT = 2.50;
 	EAR_OFFSET = 26.6;
 	EAR_HOLE_DIAMETER = 4;
@@ -61,7 +63,9 @@ module MG995() {
 	
 	translate([3/2+14.4-EAR_WIDTH/2, BODY_DEPTH/2, BODY_HEIGHT]) cylinder(h=2.5, d=13);
 	translate([3/2+14.4-EAR_WIDTH/2, BODY_DEPTH/2, BODY_HEIGHT]) cylinder(h=3, d=10);
-	translate([3/2+14.4-EAR_WIDTH/2, BODY_DEPTH/2, BODY_HEIGHT]) cylinder(h=6, d=5);
+	color("brown") {
+		translate([3/2+14.4-EAR_WIDTH/2, BODY_DEPTH/2, BODY_HEIGHT]) cylinder(h=6, d=5);
+	}
 	
 	translate([3/2+14.4-EAR_WIDTH/2+14+10/2, BODY_DEPTH/2, BODY_HEIGHT]) cylinder(h=1.5, d=10);
 
@@ -72,17 +76,17 @@ module servoHubAdapter25T() {
 	GEAR_HEIGHT = 2.50;
 	
 	difference() {
-		cylinder(h=HEGHT-GEAR_HEIGHT, d=20);
-		cylinder(h=HEGHT-GEAR_HEIGHT, d=3);
-		#translate([14/2, 0, 0]) cylinder(h=HEGHT-GEAR_HEIGHT, d=3);
-		#translate([-14/2, 0, 0]) cylinder(h=HEGHT-GEAR_HEIGHT, d=3);
-		#translate([0, 14/2, 0]) cylinder(h=HEGHT-GEAR_HEIGHT, d=3);
-		#translate([0, -14/2, 0]) cylinder(h=HEGHT-GEAR_HEIGHT, d=3);
+		cylinder(h=HEIGHT, d=20);
+		cylinder(h=HEIGHT, d=3);
+		translate([14/2, 0, 0]) cylinder(h=HEIGHT, d=3);
+		translate([-14/2, 0, 0]) cylinder(h=HEIGHT, d=3);
+		translate([0, 14/2, 0]) cylinder(h=HEIGHT, d=3);
+		translate([0, -14/2, 0]) cylinder(h=HEIGHT, d=3);
 	}
 	
 	difference() {
-		translate([0, 0, GEAR_HEGHT]) cylinder(h=GEAR_HEIGHT, d=9);
-		translate([0, 0, GEAR_HEGHT]) cylinder(h=GEAR_HEIGHT, d=6.05);
+		translate([0, 0, HEIGHT]) cylinder(h=GEAR_HEIGHT, d=9);
+		translate([0, 0, HEIGHT]) cylinder(h=GEAR_HEIGHT, d=6.05);
 	}
 }
 
