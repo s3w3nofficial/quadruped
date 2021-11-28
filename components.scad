@@ -14,6 +14,59 @@ difference() {
 }
 */
 
+module MG995() {
+	BODY_WIDTH = 40;
+	BODY_DEPTH = 20;
+	BODY_HEIGHT = 36.5;
+	
+	EAR_WIDTH = (52.8 - BODY_WIDTH) / 2;
+	EAR_DEPTH = (20 -2) / 2;
+	EAR_HEIGHT = 2.50;
+	EAR_OFFSET = 26.6;
+	EAR_HOLE_DIAMETER = 4;
+	
+	// body
+	cube([BODY_WIDTH, BODY_DEPTH, BODY_HEIGHT]);
+	
+	// EAR 1
+	difference() {
+		translate([-EAR_WIDTH, 1, EAR_OFFSET]) cube([EAR_WIDTH, EAR_DEPTH, EAR_HEIGHT]);
+		translate([-EAR_WIDTH/2, EAR_DEPTH/2 + 1, EAR_OFFSET]) cylinder(h=EAR_HEIGHT, d=EAR_HOLE_DIAMETER);
+		translate([-EAR_WIDTH, EAR_DEPTH/2 + 1 - 1, EAR_OFFSET]) cube([EAR_HOLE_DIAMETER, 2, EAR_HEIGHT]);
+	}
+	
+	// EAR 2
+	difference() {
+		translate([-EAR_WIDTH, 1+EAR_DEPTH, EAR_OFFSET]) cube([EAR_WIDTH, EAR_DEPTH, EAR_HEIGHT]);
+		translate([-EAR_WIDTH/2, EAR_DEPTH/2 + 1 + EAR_DEPTH, EAR_OFFSET]) cylinder(h=EAR_HEIGHT, d=EAR_HOLE_DIAMETER);
+		translate([-EAR_WIDTH, EAR_DEPTH/2 + 1 - 1 + EAR_DEPTH, EAR_OFFSET]) cube([EAR_HOLE_DIAMETER, 2, EAR_HEIGHT]);
+	}
+	
+	// EAR 3
+	difference() {
+		translate([BODY_WIDTH, 1, EAR_OFFSET]) cube([EAR_WIDTH, EAR_DEPTH, EAR_HEIGHT]);
+		translate([BODY_WIDTH+EAR_WIDTH/2, EAR_DEPTH/2 + 1, EAR_OFFSET]) cylinder(h=EAR_HEIGHT, d=EAR_HOLE_DIAMETER);
+		translate([BODY_WIDTH+EAR_WIDTH-EAR_HOLE_DIAMETER, EAR_DEPTH/2 + 1 - 1, EAR_OFFSET]) cube([EAR_HOLE_DIAMETER, 2, EAR_HEIGHT]);
+	}
+	
+	// EAR 4
+	difference() {
+		translate([BODY_WIDTH, 1+EAR_DEPTH, EAR_OFFSET]) cube([EAR_WIDTH, EAR_DEPTH, EAR_HEIGHT]);
+		translate([BODY_WIDTH + EAR_WIDTH/2, EAR_DEPTH/2 + 1 + EAR_DEPTH, EAR_OFFSET]) cylinder(h=EAR_HEIGHT, d=EAR_HOLE_DIAMETER);
+		translate([BODY_WIDTH+EAR_WIDTH-EAR_HOLE_DIAMETER, EAR_DEPTH/2 + 1 - 1 + EAR_DEPTH, EAR_OFFSET]) cube([EAR_HOLE_DIAMETER, 2, EAR_HEIGHT]);
+	}
+	
+	translate([3/2+14.4-EAR_WIDTH/2, BODY_DEPTH/2, BODY_HEIGHT]) cylinder(h=1.5, d=20);
+	translate([14, 1, BODY_HEIGHT]) cube([20, 18, 1.5]);
+	
+	translate([3/2+14.4-EAR_WIDTH/2, BODY_DEPTH/2, BODY_HEIGHT]) cylinder(h=2.5, d=13);
+	translate([3/2+14.4-EAR_WIDTH/2, BODY_DEPTH/2, BODY_HEIGHT]) cylinder(h=3, d=10);
+	translate([3/2+14.4-EAR_WIDTH/2, BODY_DEPTH/2, BODY_HEIGHT]) cylinder(h=6, d=5);
+	
+	translate([3/2+14.4-EAR_WIDTH/2+14+10/2, BODY_DEPTH/2, BODY_HEIGHT]) cylinder(h=1.5, d=10);
+
+}
+
 module servoHubAdapter25T() {
 	HEIGHT = 4.50;
 	GEAR_HEIGHT = 2.50;

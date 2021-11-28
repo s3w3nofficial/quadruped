@@ -2,7 +2,10 @@ use <components.scad>
 
 $fn = 50;
 
-servoHubAdapter25T();
+//servoHubAdapter25T();
+//sg90();
+
+MG995();
 
 module femur() {
 	difference() {
