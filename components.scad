@@ -13,11 +13,11 @@ difference() {
 	thread_for_nut(diameter=6, length=4);
 }
 */
-//MG995();
-servoHubAdapter25T();
+MG995();
+//servoHubAdapter25T();
 
 module MG995() {
-	BODY_WIDTH = 40;
+	BODY_WIDTH = 40 + 2.5;
 	BODY_DEPTH = 20;
 	BODY_HEIGHT = 36.5;
 	
