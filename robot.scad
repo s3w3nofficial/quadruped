@@ -1,7 +1,7 @@
 use <components.scad>
 
 $fn = 50;
-
+	
 // assembly
 translate([41.25, 25, 0]) {
 	rotate([90, 0, 0]) {
@@ -13,15 +13,44 @@ translate([41.25, 25, 0]) {
 		color("blue") translate([10+80, 5, 0]) MG995();
 		translate([20-7+10, 15, 36.5+3+4.5]) femur();
 
-
 		translate([80, 0, 26.6-5]) servoHolderAnkle();
 		color("red") translate([20-7+10+80-15+3-5, 50, 2.5+15]) rotate([180, 90, -180]) servoHubAdapter25T();
-		color("blue") translate([10+80+40, 60, 30]) rotate([0, 90, -180]) MG995();
+		color("blue") translate([10+80+40, 60, 32]) rotate([0, 90, -180]) MG995();
 		translate([102.5, 35, 26.6+15]) servoHolderFemur();
 	}
 }
 
+translate([41.25, -25+125, 0]) mirror([0, 1, 0]) {
+	rotate([90, 0, 0]) {
+		color("red") translate([20-7+10, 15, 36.5+3]) servoHubAdapter25T();
+		color("blue") translate([10, 5, 0]) MG995();
+		translate([1.25, 0, 26.6-5]) tibia();
 
+		color("red") translate([20-7+10+80, 15, 36.5+3]) servoHubAdapter25T();
+		color("blue") translate([10+80, 5, 0]) MG995();
+		translate([20-7+10, 15, 36.5+3+4.5]) femur();
+
+		translate([80, 0, 26.6-5]) servoHolderAnkle();
+		color("red") translate([20-7+10+80-15+3-5, 50, 2.5+15]) rotate([180, 90, -180]) servoHubAdapter25T();
+		color("blue") translate([10+80+40, 60, 32]) rotate([0, 90, -180]) MG995();
+		translate([102.5, 35, 26.6+15]) servoHolderFemur();
+	}
+}
+
+translate([167.5, 0, 50]) rotate([0, 90, 0])  sidePlate();
+
+
+module sidePlate() {
+	HEIGHT = 5;
+	WIDTH = 4;
+	
+	hull() {
+		translate([-15, 0, 10]) cylinder(h=HEIGHT, r=WIDTH);
+		translate([-15, 125, 10]) cylinder(h=HEIGHT, r=WIDTH);
+		translate([10, 125, 10]) cylinder(h=HEIGHT, r=WIDTH);
+		translate([10, 0, 10]) cylinder(h=HEIGHT, r=WIDTH);
+	}
+}
 
 module servoHolderFemur() {
 	HEIGHT = 5;
@@ -50,18 +79,18 @@ module servoHolderFemur() {
 			translate([40+4+(RWIDTH-40)/2+0.5, RDEPTH-4-9/2-2, 0]) cylinder(h=HEIGHT, d=4);
 			translate([40+4+(RWIDTH-40)/2+0.5, RDEPTH-4-9/2-9-2, 0]) cylinder(h=HEIGHT, d=4);	
 			
-			translate([15, 0, 0]) cube([5, 5, 5]);
+			translate([14.5, 0, 0]) cube([6, 5, 5]);
 		}
 		
-		translate([10, -10, 0]) cube([5, 10, 5]);
-		translate([15, -5, 0])  difference() {
-			cube([5, 5, 5]);
-			translate([2, 2, 0]) cylinder(h=HEIGHT, d=4);
+		translate([10, -10, 0]) cube([4.5, 10, 5]);
+		translate([14.5, -5, 0])  difference() {
+			cube([6, 5, 5]);
+			translate([2.5, 2.5, 0]) cylinder(h=HEIGHT, d=2);
 		}
-		translate([20, -5, 0]) cube([25, 5, 5]);
-		translate([20, -10, 0]) cube([25, 5, 5]);
-		translate([40, -30, 0]) cube([5, 20, 5]);
-		translate([20, -35, 0]) cube([25, 5, 5]);
+		translate([20.5, -5, 0]) cube([29.5, 5, 5]);
+		translate([20.5, -10, 0]) cube([29.5, 5, 5]);
+		translate([45, -30, 0]) cube([5, 20, 5]);
+		translate([20, -35, 0]) cube([30, 5, 5]);
 	}
 }
 
